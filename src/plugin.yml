@@ -1,0 +1,13 @@
+name: iZone
+main: net.techguard.izone.iZone
+version: 7.6.1
+description: Easy yet Complex
+softdepend: [Multiverse-Core, Multiverse-Portals, My Worlds, MultiWorld, Vault]
+authors:
+  - TechGuard
+  - Koponya
+commands:
+  izone:
+    description: Prints current version
+  zmod:
+    description: Prints all the 'iZone' zone commands
