@@ -53,6 +53,10 @@ public class createCommand extends zmodBase
           return;
         }
       }
+      if(ZoneManager.checkZoneInside(c)) {
+    	  p.sendMessage("§cNot touch each other with the zones!");
+          return;
+      }
       Zone zone = ZoneManager.add(name, c);
       zone.Add("o:" + p.getName());
 

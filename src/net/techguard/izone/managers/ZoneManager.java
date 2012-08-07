@@ -101,6 +101,35 @@ public class ZoneManager
     return a.getAllowed().contains(b.getName());
   }
 
+  public static boolean checkZoneInside(Location[] zone) {
+	  if(zone.length!=2) return true;
+	  int xMin = zone[0].getBlockX();
+	  int xMax = zone[1].getBlockX();
+	  int zMin = zone[0].getBlockZ();
+	  int zMax = zone[1].getBlockZ();
+	  if(xMin>xMax) {
+		  int tmp = xMin;
+		  xMin = xMax;
+		  xMax = tmp;
+	  }
+	  if(zMin>zMax) {
+		  int tmp = zMin;
+		  zMin = zMax;
+		  zMax = tmp;
+	  }
+	  for(Zone oZone : ZoneManager.Zones) {
+		  int oXMin = oZone.getBorder1().getBlockX();
+		  int oXMax = oZone.getBorder2().getBlockX();
+		  int oZMin = oZone.getBorder1().getBlockZ();
+		  int oZMax = oZone.getBorder2().getBlockZ();
+		  if(
+				  ((oXMin>=xMin && oXMin<=xMax) || (oXMax>=xMin && oXMax<=xMax)) && 
+				  ((oZMin>=zMin && oZMin<=zMax) || (oZMax>=zMin && oZMax<=zMax))
+			) return true;
+	  }
+	  return false;
+  }
+  
   public static String canBuildZone(Player p, Location[] border)
   {
     if (checkOwnsPermission(p)) {
